@@ -46,14 +46,19 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Ensure database is created
+// Ensure database is created and seeded
 using (var scope = app.Services.CreateScope())
 {
     try
     {
         var context = scope.ServiceProvider.GetRequiredService<StockDbContext>();
+        
+        // Drop and recreate database to ensure fresh seed data
+        context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
-        Console.WriteLine("Database created successfully!");
+        
+        Console.WriteLine("Database created and seeded successfully!");
+        Console.WriteLine("50 sample products have been added to the database.");
     }
     catch (Exception ex)
     {

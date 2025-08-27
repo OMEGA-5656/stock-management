@@ -19,6 +19,55 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-image: url('../images/cat-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+/* Add a semi-transparent overlay to make content more readable */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.85); /* 85% white overlay for translucency */
+  z-index: -1;
+}
+
+/* Ensure content containers have proper background */
+.container, .container-fluid {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Make navbar more visible */
+.navbar {
+  background-color: rgba(33, 37, 41, 0.95) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Make cards and tables more visible */
+.card, .table {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+}
+
+/* Ensure forms are readable */
+.form-control {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Make buttons stand out */
+.btn {
+  backdrop-filter: blur(5px);
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
